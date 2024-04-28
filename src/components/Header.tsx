@@ -29,13 +29,7 @@ export default function Header() {
             <a href="/contact">Contact Us</a>
           </li>
           <li className="hover:text-red-700 hover:text-xl">
-            <a
-              href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              PDF
-            </a>
+            <a href="/login">Login</a>
           </li>
         </ul>
       </nav>
