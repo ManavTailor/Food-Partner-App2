@@ -28,7 +28,7 @@ export default function LoginPage() {
     <div className=" flex items-center justify-center w-full py-20 text-center bg-[url('/Images/homeBG5.jpg')] bg-center bg-cover " >
     
       <div className=" bg-slate-100 items-center justify-center rounded-2xl shodow-2xl flex flex-col p-10 text-black">
-      <h1 className="login text-black flex items-start  w-full  font-semibold ">Login</h1>
+      <h1 className="login text-black text-xl flex items-start  w-full  font-semibold ">Login</h1>
         <Image  className="rounded" src="/Images/eshop.jpg" width={50} height={50} alt="eShop Logo" />
 
         
