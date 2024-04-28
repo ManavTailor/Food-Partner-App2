@@ -14,9 +14,10 @@ export default function Header() {
           className="w-[200%]"
         />
       </div>
+      
       <nav>
-        <ul className="flex space-x-4 text-black">
-          <li className="hover:text-red-700 hover:text-xl transition-all duration-500 ease-in-out">
+        <ul className="flex space-x-4 text-black md:ml-auto flex-wrap items-center">
+          <li className="hover:text-red-700 hover:text-xl transition-all duration-500 ease-in-out   ">
             <a href="/">Home</a>
           </li>
           <li className="hover:text-red-700 hover:text-xl">
@@ -28,14 +29,8 @@ export default function Header() {
           <li className="hover:text-red-700 hover:text-xl">
             <a href="/contact">Contact Us</a>
           </li>
-          <li className="hover:text-red-700 hover:text-xl">
-            <a
-              href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              PDF
-            </a>
+          <li className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-600 rounded shadow">
+          <a href="/login">LOGIN</a>
           </li>
         </ul>
       </nav>
