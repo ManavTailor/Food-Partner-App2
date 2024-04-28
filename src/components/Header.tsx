@@ -15,7 +15,7 @@ export default function Header() {
         />
       </div>
       <nav>
-        <ul className="flex space-x-4 text-black">
+        <ul className="flex space-x-4 text-black md :ml-auto flex-wrap items-center ">
           <li className="hover:text-red-700 hover:text-xl transition-all duration-500 ease-in-out">
             <a href="/">Home</a>
           </li>
@@ -28,7 +28,7 @@ export default function Header() {
           <li className="hover:text-red-700 hover:text-xl">
             <a href="/contact">Contact Us</a>
           </li>
-          <li className="hover:text-red-700 hover:text-xl">
+          <li className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
             <a href="/login">Login</a>
           </li>
         </ul>
