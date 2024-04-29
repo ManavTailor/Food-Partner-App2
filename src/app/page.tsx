@@ -1,7 +1,14 @@
+"use client";
 import { Button } from "antd";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const data = fetch("/api/GET");
+    console.log(data, "helllo");
+  });
   return (
     <main>
       <div className="flex flex-col items-center justify-between relative ">
