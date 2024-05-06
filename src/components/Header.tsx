@@ -24,7 +24,7 @@ export default function Header() {
             <a href="/about">About</a>
           </li>
           <li className="hover:text-red-700 hover:text-xl">
-            <a href="/products">Products</a>
+            <a href="/orders">Orders</a>
           </li>
           <li className="hover:text-red-700 hover:text-xl">
             <a href="/contact">Contact Us</a>
