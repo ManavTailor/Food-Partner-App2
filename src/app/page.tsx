@@ -2,7 +2,7 @@
 import { Button, Card } from "antd";
 import Search from "antd/es/input/Search";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BiArrowFromTop } from "react-icons/bi";
 import { BsCalendarCheck } from "react-icons/bs";
 import { CiShop } from "react-icons/ci";
@@ -14,7 +14,11 @@ import { TbNotes } from "react-icons/tb";
 
 export default function Home() {
   const [faqs, setFaqs] = useState(false);
-
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const data = fetch("/api/GET");
+    console.log(data, "helllo");
+  });
   return (
     <main>
       <div className="flex flex-col items-center justify-between relative ">
