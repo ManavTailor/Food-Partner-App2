@@ -14,7 +14,7 @@ export default function Header() {
           className="w-[200%]"
         />
       </div>
-      
+
       <nav>
         <ul className="flex space-x-4 text-black md:ml-auto flex-wrap items-center">
           <li className="hover:text-red-700 hover:text-xl transition-all duration-500 ease-in-out   ">
@@ -30,7 +30,7 @@ export default function Header() {
             <a href="/contact">Contact Us</a>
           </li>
           <li className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-600 rounded shadow">
-          <a href="/login">LOGIN</a>
+            <a href="/login">LOGIN</a>
           </li>
         </ul>
       </nav>
