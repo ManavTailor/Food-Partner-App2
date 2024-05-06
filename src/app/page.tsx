@@ -1,6 +1,9 @@
+"use client";
 import { Button, Card } from "antd";
 import Search from "antd/es/input/Search";
 import Image from "next/image";
+import { useState } from "react";
+import { BiArrowFromTop } from "react-icons/bi";
 import { BsCalendarCheck } from "react-icons/bs";
 import { CiShop } from "react-icons/ci";
 import { FaEarthAfrica } from "react-icons/fa6";
@@ -10,6 +13,8 @@ import { SiTicktick } from "react-icons/si";
 import { TbNotes } from "react-icons/tb";
 
 export default function Home() {
+  const [faqs, setFaqs] = useState(false);
+
   return (
     <main>
       <div className="flex flex-col items-center justify-between relative ">
@@ -287,6 +292,51 @@ export default function Home() {
               </span>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="bg-white ">
+        <div>
+          <span className="text-2xl text-black font-semibold text-center flex justify-center py-5">
+            Frequently Asked Questions
+          </span>
+        </div>
+        <div className="flex  flex-col justify-center items-center">
+          <span className="text-black p-2 border-y-2 border-gray-100 flex items-center w-[50%] justify-between">
+            <span>
+              What will we charge me for creating a page on its platform?
+            </span>
+            <span onClick={() => setFaqs(true)}>
+              <BiArrowFromTop />
+            </span>
+          </span>
+          {faqs && (
+            <span className="text-black text-sm p-2 w-1/2">
+              this is an faq answer test bjwe wegjwegwe gjkewgnwegknewg wekn we
+              wenwegbwewebg weg wejgbwegwejgwe gejg eg ejgew gejg egbewejgbwe
+              answer test bjwe wegjwegwe gjkewgnwegknewg wekn we wenwegbwewebg
+              weg wejgbwegwejgwe gejg eg ejgew gejg egbewejgbweanswer test bjwe
+              wegjwegwe gjkewgnwegknewg wekn we wenwegbwewebg weg wejgbwegwejgwe
+              gejg eg ejgew gejg egbewejgbwe
+            </span>
+          )}
+          <span className="text-black p-2 border-y-2 border-gray-100 flex items-center w-[50%] justify-between">
+            <span>
+              What all documents are required for registering on online
+              ordering?
+            </span>
+            <span onClick={() => setFaqs(true)}>
+              <BiArrowFromTop />
+            </span>
+          </span>
+          <span className="text-black p-2 border-y-2 border-gray-100 flex items-center w-[50%] justify-between">
+            <span>
+              I have a large fleet of delivery boys, why should I use Zomato’s
+              delivery service?
+            </span>
+            <span onClick={() => setFaqs(true)}>
+              <BiArrowFromTop />
+            </span>
+          </span>
         </div>
       </div>
     </main>
