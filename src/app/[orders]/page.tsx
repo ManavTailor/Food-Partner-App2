@@ -1,6 +1,7 @@
 import React from "react";
-import { Card, Image, Table } from "antd";
+import { Button, Card, Image, Table } from "antd";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+import { RxCheckCircled, RxCrossCircled, RxPinRight } from "react-icons/rx";
 
 const page = () => {
   const dataSource = [
@@ -28,12 +29,18 @@ const page = () => {
   ];
 
   return (
-    <div className="p-10 bg-gray-100">
+    <div className="p-5 bg-gray-100">
       <Card className="cursor-pointer ">
-        <div className="flex space-x-2">
-          <MdOutlineProductionQuantityLimits size={30} />
-          <div className="h-10  border-r-2 border-gray-300"></div>
-          <div className="text-2xl font-semibold ">Orders</div>
+        <div className="flex space-x-2 items-center">
+          <MdOutlineProductionQuantityLimits size={24} />
+          <div className="h-12  border-r-2 border-gray-300"></div>
+          <div className="flex w-full justify-between items-center">
+            <div className="text-lg font-semibold ">Order Number : #jfnwe</div>
+            <div className="text-lg font-semibold flex flex-col">
+              <span>Total Preparation Time : </span>
+              <span className="text-base">Waiting Time : </span>
+            </div>
+          </div>
         </div>
       </Card>
       <Table
@@ -64,137 +71,22 @@ const page = () => {
         ]}
         className="mt-5"
       />
-
-      {/* <div className="flex flex-wrap gap-14 justify-center">
-        <Card className="cursor-pointer  mt-5 w-[20%] shadow-sm hover:shadow-gray-600">
-          <div className="flex justify-center items-center">
-            <Image
-              src="/Images/eshop.jpg"
-              width={200}
-              height={200}
-              alt="eShop Logo"
-              preview={false}
-              className="hover:scale-110"
-            />
-          </div>
-          <div className="mt-2">
-            <div className="text-xl font-semibold ">Product Name</div>
-            <div className="text-lg font-thin">$30</div>
-          </div>
-        </Card>
-        <Card className="cursor-pointer  mt-5 w-[20%]">
-          <div className="flex justify-center items-center">
-            <Image
-              src="/Images/eshop.jpg"
-              width={200}
-              height={200}
-              alt="eShop Logo"
-              preview={false}
-              className="hover:scale-110"
-            />
-          </div>
-          <div className="mt-2">
-            <div className="text-xl font-semibold ">Product Name</div>
-            <div className="text-lg font-thin">$30</div>
-          </div>
-        </Card>
-        <Card className="cursor-pointer  mt-5 w-[20%]">
-          <div className="flex justify-center items-center">
-            <Image
-              src="/Images/eshop.jpg"
-              width={200}
-              height={200}
-              alt="eShop Logo"
-              preview={false}
-              className="hover:scale-110"
-            />
-          </div>
-          <div className="mt-2">
-            <div className="text-xl font-semibold ">Product Name</div>
-            <div className="text-lg font-thin">$30</div>
-          </div>
-        </Card>
-        <Card className="cursor-pointer  mt-5 w-[20%]">
-          <div className="flex justify-center items-center">
-            <Image
-              src="/Images/eshop.jpg"
-              width={200}
-              height={200}
-              alt="eShop Logo"
-              preview={false}
-              className="hover:scale-110"
-            />
-          </div>
-          <div className="mt-2">
-            <div className="text-xl font-semibold ">Product Name</div>
-            <div className="text-lg font-thin">$30</div>
-          </div>
-        </Card>
-        <Card className="cursor-pointer  mt-5 w-[20%]">
-          <div className="flex justify-center items-center">
-            <Image
-              src="/Images/eshop.jpg"
-              width={200}
-              height={200}
-              alt="eShop Logo"
-              preview={false}
-              className="hover:scale-110"
-            />
-          </div>
-          <div className="mt-2">
-            <div className="text-xl font-semibold ">Product Name</div>
-            <div className="text-lg font-thin">$30</div>
-          </div>
-        </Card>
-        <Card className="cursor-pointer  mt-5 w-[20%]">
-          <div className="flex justify-center items-center">
-            <Image
-              src="/Images/eshop.jpg"
-              width={200}
-              height={200}
-              alt="eShop Logo"
-              preview={false}
-              className="hover:scale-110"
-            />
-          </div>
-          <div className="mt-2">
-            <div className="text-xl font-semibold ">Product Name</div>
-            <div className="text-lg font-thin">$30</div>
-          </div>
-        </Card>
-        <Card className="cursor-pointer  mt-5 w-[20%]">
-          <div className="flex justify-center items-center">
-            <Image
-              src="/Images/eshop.jpg"
-              width={200}
-              height={200}
-              alt="eShop Logo"
-              preview={false}
-              className="hover:scale-110"
-            />
-          </div>
-          <div className="mt-2">
-            <div className="text-xl font-semibold ">Product Name</div>
-            <div className="text-lg font-thin">$30</div>
-          </div>
-        </Card>
-        <Card className="cursor-pointer  mt-5 w-[20%]">
-          <div className="flex justify-center items-center">
-            <Image
-              src="/Images/eshop.jpg"
-              width={200}
-              height={200}
-              alt="eShop Logo"
-              preview={false}
-              className="hover:scale-110"
-            />
-          </div>
-          <div className="mt-2">
-            <div className="text-xl font-semibold ">Product Name</div>
-            <div className="text-lg font-thin">$30</div>
-          </div>
-        </Card>
-      </div> */}
+      <div className="flex space-x-5">
+        <button
+          type="button"
+          className="flex items-center gap-1 text-sm bg-white text-black hover:bg-green-500 px-2 hover:text-white transition-all duration-300 ease-in-out py-1 rounded-md "
+        >
+          <RxCheckCircled />
+          Accept
+        </button>
+        <button
+          type="button"
+          className="flex items-center gap-1 text-sm bg-white text-black hover:bg-red-600 px-2 hover:text-white transition-all duration-300 ease-in-out py-1 rounded-md "
+        >
+          <RxCrossCircled />
+          Reject
+        </button>
+      </div>
     </div>
   );
 };
