@@ -1,6 +1,8 @@
 import Search from "antd/es/input/Search";
 import Image from "next/image";
 import Link from "next/link";
+import { LoginOutlined } from "@ant-design/icons";
+import { CiUser } from "react-icons/ci";
 
 export default function Header() {
   return (
@@ -29,10 +31,15 @@ export default function Header() {
           </li>
           <li className="hover:text-red-700 hover:text-xl">
             <Link href="/inventory">Inventory</Link>
-            
           </li>
-          <li className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-600 rounded shadow">
-            <Link href="/login">LOGIN</Link>
+          <li className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-4 border border-gray-600 rounded shadow">
+            <Link
+              href="/login"
+              className="flex justify-center items-center space-x-1"
+            >
+              <CiUser className="font-bold" />
+              LOGIN
+            </Link>
           </li>
         </ul>
       </nav>
