@@ -5,15 +5,16 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header className="flex justify-between bg-white  items-center p-4 sticky top-0 z-10">
-      <Image src="/Images/eshop.jpg" width={70} height={70} alt="eShop Logo" />
-      {/* <h1 className="text-2xl text-black font-bold">eShop</h1> */}
-      <div className="text-black">
-        <Search
-          type="text"
-          placeholder="Search Product Here"
-          className="w-[200%]"
+      <Link href="/">
+        <Image
+          src="/Images/eshop.jpg"
+          width={50}
+          height={50}
+          alt="eShop Logo"
+          className="rounded-full"
         />
-      </div>
+      </Link>
+      {/* <h1 className="text-2xl text-black font-bold">eShop</h1> */}
 
       <nav>
         <ul className="flex space-x-4 text-black md:ml-auto flex-wrap items-center">
@@ -21,13 +22,13 @@ export default function Header() {
             <Link href="/">Home</Link>
           </li>
           <li className="hover:text-red-700 hover:text-xl">
-            <Link href="/about">About</Link>
+            <Link href="/about">Menu</Link>
           </li>
           <li className="hover:text-red-700 hover:text-xl">
             <Link href="/orders">Orders</Link>
           </li>
           <li className="hover:text-red-700 hover:text-xl">
-            <Link href="/contact">Contact Us</Link>
+            <Link href="/contact">Inventory</Link>
           </li>
           <li className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-600 rounded shadow">
             <Link href="/login">LOGIN</Link>
