@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     const body = await req.json()
 
     // const { name, email, userName, password } = userSchema.parse(body)
-    const { name, email, userName, password } = body
+    const { name, email, password } = body
 
     // Check if the email already exists
     const existingEmail = await db.user.findUnique({
@@ -32,25 +32,12 @@ export async function POST(req: Request) {
       )
     }
 
-    // Check if the username already exists
-    const existingUsername = await db.user.findUnique({
-      where: { userName: userName }
-    })
-
-    if (existingUsername) {
-      return NextResponse.json(
-        { user: null, message: 'Username already exists' },
-        { status: 409 }
-      )
-    }
-
     // Create the user
     const hashedPassword = await hash(password, 10)
     const newUser = await db.user.create({
       data: {
         email,
         name,
-        userName,
         password: hashedPassword
       }
     })

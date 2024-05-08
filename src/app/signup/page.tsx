@@ -1,36 +1,37 @@
-"use client";
+'use client'
 
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input } from 'antd'
 // signup page
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { UserOutlined, MailOutlined } from "@ant-design/icons";
-import { PiPhone } from "react-icons/pi";
-import { BiLock } from "react-icons/bi";
+import { MailOutlined, UserOutlined } from '@ant-design/icons'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { BiLock } from 'react-icons/bi'
+import { PiPhone } from 'react-icons/pi'
 
 export default function SignupPage() {
-  const [form] = Form.useForm();
-  const [phone, setPhone] = useState("");
-  const router = useRouter();
+  const [form] = Form.useForm()
+  const [phone, setPhone] = useState('')
+  const router = useRouter()
   const signInWithGoogle = () => {
-    return {};
-  };
+    return {}
+  }
 
   const handleSubmit = async (values: any) => {
     // e.preventDefault();
-    const res = await fetch("/api/auth/register", {
-      method: "POST",
+    console.log({ values })
+    const res = await fetch('/api/auth/register', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(values),
-    });
+      body: JSON.stringify({})
+    })
     if (res.ok) {
-      router.push("/login");
+      router.push('/login')
     }
-  };
+  }
 
   return (
     <div className=" flex items-center justify-center w-full py-20 text-center bg-[url('/Images/homeBG5.jpg')] bg-center bg-cover ">
@@ -56,8 +57,8 @@ export default function SignupPage() {
           </div>
           {/* <label htmlFor="Name"></label> */}
           <Form.Item
-            name="Name"
-            rules={[{ required: true, message: "Please input your Name!" }]}
+            name="name"
+            rules={[{ required: true, message: 'Please input your Name!' }]}
           >
             <Input
               prefix={<UserOutlined />}
@@ -71,7 +72,7 @@ export default function SignupPage() {
           {/* <label htmlFor="email"></label> */}
           <Form.Item
             name="email"
-            rules={[{ required: true, message: "Please input your Email!" }]}
+            rules={[{ required: true, message: 'Please input your Email!' }]}
           >
             <Input
               prefix={<MailOutlined />}
@@ -99,7 +100,7 @@ export default function SignupPage() {
           {/* <label htmlFor="password"></label> */}
           <Form.Item
             name="password"
-            rules={[{ required: true, message: "Please input your Password!" }]}
+            rules={[{ required: true, message: 'Please input your Password!' }]}
           >
             <Input
               prefix={<BiLock />}
@@ -113,7 +114,7 @@ export default function SignupPage() {
           {/* <label htmlFor="confirmPassword"></label> */}
           <Form.Item
             name="confirmPassword"
-            rules={[{ required: true, message: "Please input your Password!" }]}
+            rules={[{ required: true, message: 'Please input your Password!' }]}
           >
             <Input
               prefix={<BiLock />}
@@ -152,5 +153,5 @@ export default function SignupPage() {
         </Form>
       </div>
     </div>
-  );
+  )
 }
