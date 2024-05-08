@@ -3,7 +3,7 @@ import { Card } from 'antd'
 import Search from 'antd/es/input/Search'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { BiArrowFromTop } from 'react-icons/bi'
 import { BsCalendarCheck } from 'react-icons/bs'
 import { CiShop } from 'react-icons/ci'
@@ -15,12 +15,13 @@ import { TbNotes } from 'react-icons/tb'
 
 export default function Home() {
   const { data: session } = useSession()
+  console.log(session, 'session')
 
   const [faqs, setFaqs] = useState(false)
   const [data, setData] = useState([])
-  useEffect(() => {
-    const data = fetch('/api/GET').then(res => console.log(res, 'result'))
-  })
+  // useEffect(() => {
+  //   const data = fetch('/api/GET').then(res => console.log(res, 'result'))
+  // })
 
   return (
     <>
@@ -37,7 +38,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col absolute top-44 left-10">
             <span className="text-3xl font-semibold space-y-1">
-              Partner with Us
+              Welcome {session?.user?.name || 'user'}
             </span>
             <span className="text-3xl font-semibold">
               at 0% commission for the 1st month!
