@@ -3,6 +3,7 @@ import { Card } from "antd";
 import Search from "antd/es/input/Search";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { BiArrowFromTop } from "react-icons/bi";
 import { BsCalendarCheck } from "react-icons/bs";
@@ -50,12 +51,14 @@ export default function Home() {
           </div>
           <div className=" absolute top-[75%] left-[35%] space-x-5 flex ">
             <div className="flex flex-col space-y-2">
+              <Link href='/resinfo'>
               <button
                 type="button"
                 className=" bg-blue-500  font-serif hover:bg-blue-700 p-2 rounded-md "
               >
                 Register your Restaurant
               </button>
+              </Link>
               <span className="text-xs">Need help ? Contact : 9876543210</span>
             </div>
             <div>
