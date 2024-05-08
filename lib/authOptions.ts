@@ -1,46 +1,48 @@
 import { NextAuthOptions } from 'next-auth'
 
 // import clientPromise from '@/lib/MongodbClient'
+import { compare } from 'bcrypt'
+import CredentialsProvider from 'next-auth/providers/credentials'
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
+import { db } from './db'
 
 export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt'
   },
   providers: [
-    // CredentialsProvider({
-    //   name: 'Credentials',
-    //   credentials: {
-    //     email: { label: 'Email', type: 'email' },
-    //     password: { label: 'Password', type: 'password' }
-    //   },
+    CredentialsProvider({
+      name: 'Credentials',
+      credentials: {
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' }
+      },
 
-    //   async authorize(credentials, req) {
-    //     console.log('credentials', credentials)
+      async authorize(credentials, req) {
+        console.log('credentials', credentials)
 
-    //     const client = await db.user.findUnique({
-    //       where: { email: credentials?.email }
-    //     })
+        const client = await db.user.findUnique({
+          where: { email: credentials?.email }
+        })
 
-    //     if (client) {
-    //       const passwordCorrect = await compare(
-    //         credentials?.password || '',
-    //         client.password
-    //       )
+        if (client) {
+          const passwordCorrect = await compare(
+            credentials?.password || '',
+            client.password
+          )
 
-    //       if (passwordCorrect) {
-    //         return {
-    //           id: client.id,
-    //           email: client.email
-    //         }
-    //       }
-    //     } else {
-    //       return 'User not found!'
-    //     }
-    //     return null
-    //   }
-    // }),
+          if (passwordCorrect) {
+            return {
+              id: client.id.toString(), // Change the type of 'id' to string
+              email: client.email
+            }
+          }
+        }
+
+        return null
+      }
+    }),
 
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
