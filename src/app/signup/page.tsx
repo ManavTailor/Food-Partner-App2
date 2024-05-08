@@ -8,7 +8,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { BiLock } from 'react-icons/bi'
-import { PiPhone } from 'react-icons/pi'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function SignupPage() {
   const [form] = Form.useForm()
@@ -20,16 +21,31 @@ export default function SignupPage() {
 
   const handleSubmit = async (values: any) => {
     // e.preventDefault();
-    console.log({ values })
-    const res = await fetch('/api/auth/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({})
-    })
-    if (res.ok) {
-      router.push('/login')
+    try {
+      console.log({ values })
+      const { name, email, password, confirmPassword } = values
+      if (password !== confirmPassword) {
+        return
+      }
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password
+        })
+      })
+      toast.success('User Created Successfully!')
+      if (res.ok) {
+        form.resetFields()
+        router.push('/login')
+      }
+    } catch (error) {
+      console.error('Api Error:', error)
+      toast.error('Something went wrong please try again!')
     }
   }
 
@@ -83,20 +99,6 @@ export default function SignupPage() {
               placeholder="Email"
             />
           </Form.Item>
-          {/* <label htmlFor="phone"></label> */}
-          <Form.Item
-            name="phone"
-            // rules={[{ required: true, message: "Please input your Phone!" }]}
-          >
-            <Input
-              prefix={<PiPhone />}
-              className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none w-full focus:border-gray-600"
-              id="phone"
-              type="tel"
-              // value="phone"
-              placeholder="Phone"
-            />
-          </Form.Item>
           {/* <label htmlFor="password"></label> */}
           <Form.Item
             name="password"
@@ -107,14 +109,28 @@ export default function SignupPage() {
               className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none w-full focus:border-gray-600"
               id="password"
               type="password"
-              value="password"
               placeholder="Password"
             />
           </Form.Item>
-          {/* <label htmlFor="confirmPassword"></label> */}
           <Form.Item
             name="confirmPassword"
-            rules={[{ required: true, message: 'Please input your Password!' }]}
+            dependencies={['password']}
+            rules={[
+              { required: true, message: 'Confirm your Password!' },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve()
+                  }
+                  if (!getFieldValue('password')) {
+                    return Promise.resolve()
+                  }
+                  return Promise.reject(
+                    new Error('The passwords do not match!')
+                  )
+                }
+              })
+            ]}
           >
             <Input
               prefix={<BiLock />}
@@ -129,20 +145,22 @@ export default function SignupPage() {
               Create Account
             </Button>
           </Form.Item>
-          {/* <button
-          className="google-button gap-2 flex text-center justify-center items-center bg-white  text-black py-1 w-full border-2 text-sm  border-gray-300 rounded mt-5"
-          type="submit"
-          onClick={() => signInWithGoogle()}
-        >
-          {' '}
-          <Image
-            alt="Google Logo"
-            src="https://cdn-icons-png.flaticon.com/128/2991/2991148.png "
-            width={15}
-            height={15}
-          />{' '}
-          Sign in with Google{'  '}
-        </button>{' '} */}
+          <button
+            className="google-button gap-2 flex text-center justify-center items-center bg-white  text-black py-1 w-full border-2 text-sm  border-gray-300 rounded mt-5"
+            type="submit"
+            onClick={() =>
+              toast.error('Google Sign in is not available at the moment!')
+            }
+          >
+            {' '}
+            <Image
+              alt="Google Logo"
+              src="https://cdn-icons-png.flaticon.com/128/2991/2991148.png "
+              width={15}
+              height={15}
+            />{' '}
+            Sign in with Google{'  '}
+          </button>{' '}
           <hr />
           <span className="signup text-black flex items-start gap-2 w-full mt-5 ">
             Already have an account?

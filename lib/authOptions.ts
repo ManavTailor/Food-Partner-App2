@@ -1,7 +1,6 @@
 import { NextAuthOptions } from 'next-auth'
 
 // import clientPromise from '@/lib/MongodbClient'
-import CredentialsProvider from 'next-auth/providers/credentials'
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
 
@@ -10,28 +9,38 @@ export const authOptions: NextAuthOptions = {
     strategy: 'jwt'
   },
   providers: [
-    CredentialsProvider({
-      name: 'Credentials',
-      credentials: {
-        userName: { label: 'Username', type: 'text' },
-        email: { label: 'Email', type: 'email' },
-        password: { label: 'Password', type: 'password' }
-      },
+    // CredentialsProvider({
+    //   name: 'Credentials',
+    //   credentials: {
+    //     email: { label: 'Email', type: 'email' },
+    //     password: { label: 'Password', type: 'password' }
+    //   },
 
-      async authorize(credentials, req) {
-        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/auth/signin`, {
-          method: 'POST',
-          body: JSON.stringify(credentials),
-          headers: { 'Content-Type': 'application/json' }
-        })
-        body: JSON.stringify(credentials)
-        const user = await res.json()
-        if (res.ok && user) {
-          return user
-        }
-        return null
-      }
-    }),
+    //   async authorize(credentials, req) {
+    //     console.log('credentials', credentials)
+
+    //     const client = await db.user.findUnique({
+    //       where: { email: credentials?.email }
+    //     })
+
+    //     if (client) {
+    //       const passwordCorrect = await compare(
+    //         credentials?.password || '',
+    //         client.password
+    //       )
+
+    //       if (passwordCorrect) {
+    //         return {
+    //           id: client.id,
+    //           email: client.email
+    //         }
+    //       }
+    //     } else {
+    //       return 'User not found!'
+    //     }
+    //     return null
+    //   }
+    // }),
 
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
