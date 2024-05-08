@@ -28,7 +28,7 @@ export default function Header() {
             <Link href="/orders">Orders</Link>
           </li>
           <li className="hover:text-red-700 hover:text-xl">
-            <Link href="/contact">Inventory</Link>
+            <Link href="/inventory">Inventory</Link>
           </li>
           <li className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-600 rounded shadow">
             <Link href="/login">LOGIN</Link>
