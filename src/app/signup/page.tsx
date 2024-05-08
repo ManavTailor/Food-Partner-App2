@@ -13,6 +13,24 @@ export default function SignupPage() {
     return {}
   }
 
+  const handleSubmit = async (e: any) => {
+    e.preventDefault()
+    const res = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: e.target.email.value,
+        name: e.target.name.value,
+        password: e.target.password.value
+      })
+    })
+    if (res.ok) {
+      router.push('/login')
+    }
+  }
+
   return (
     <div className=" flex items-center justify-center w-full py-20 text-center bg-[url('/Images/homeBG5.jpg')] bg-center bg-cover ">
       <div className=" bg-slate-100 items-center justify-center rounded-2xl shodow-2xl flex flex-col p-10 text-black">
@@ -43,7 +61,7 @@ export default function SignupPage() {
         <button className="p-2 border border-gray-300 rounded-lg mb-4 hover:bg-gray-500 focus:outline-none w-full focus:border-gray-600">
           Create Account
         </button>
-        <button
+        {/* <button
           className="google-button gap-2 flex text-center justify-center items-center bg-white  text-black py-1 w-full border-2 text-sm  border-gray-300 rounded mt-5"
           type="submit"
           onClick={() => signInWithGoogle()}
@@ -56,7 +74,7 @@ export default function SignupPage() {
             height={15}
           />{' '}
           Sign in with Google{'  '}
-        </button>{' '}
+        </button>{' '} */}
         <hr />
         <span className="signup text-black flex items-start gap-2 w-full mt-5 ">
           Already have an account?
