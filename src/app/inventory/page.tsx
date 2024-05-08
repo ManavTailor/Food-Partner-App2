@@ -14,47 +14,27 @@ const page = () => {
   const dataSource = [
     {
       key: "1",
-      orderId: "ORD-001",
-      orderBy: "John Doe",
-      status: (
-        <div className="flex items-center">
-          <RxCheckCircled size={20} className="text-green-500" />
-          <span className="text-green-500">Delivered</span>
-        </div>
-      ),
+      ingredients: "ORD-001",
+      inStock: "John Doe",
+      usedIn:"wow"
     },
     {
       key: "2",
-      orderId: "ORD-002",
-      orderBy: "Jane Doe",
-      status: (
-        <div className="flex items-center">
-          <RxCrossCircled size={20} className="text-red-500" />
-          <span className="text-red-500">Cancelled</span>
-        </div>
-      ),
+      ingredients: "ORD-002",
+      inStock: "Jane Doe",
+      usedIn :"wow"
     },
     {
       key: "3",
-      orderId: "ORD-003",
-      orderBy: "John Doe",
-      status: (
-        <div className="flex items-center">
-          <RxPinRight size={20} className="text-yellow-500" />
-          <span className="text-yellow-500">Pending</span>
-        </div>
-      ),
+      ingredients: "ORD-003",
+      inStock: "John Doe",
+      usedIn: "Wow"
     },
     {
       key: "4",
-      orderId: "ORD-004",
-      orderBy: "Jane Doe",
-      status: (
-        <div className="flex items-center">
-          <RxCheckCircled size={20} className="text-green-500" />
-          <span className="text-green-500">Delivered</span>
-        </div>
-      ),
+      ingredients: "ORD-004",
+      inStock: "Jane Doe",
+      usedIn: "wow"
     },
   ];
 
@@ -65,15 +45,15 @@ const page = () => {
           <MdOutlineProductionQuantityLimits size={24} />
           <div className="h-6 border-r-2 border-gray-300"></div>
           <div className="flex w-full justify-between items-center">
-            <div className="text-lg font-semibold ">Orders</div>
+            <div className="text-lg font-semibold ">Inventory</div>
             <div className="text-lg font-semibold flex flex-col">
-              <Link href="/addorder">
+              <Link href="/addinventory">
                 <Button
                   // type="text"
                   className="p-2 flex items-center text-white bg-blue-500"
                   icon={<BiPlus />}
                 >
-                  Add Order
+                  Add Inventory
                 </Button>
               </Link>
             </div>
@@ -91,19 +71,19 @@ const page = () => {
             width: "10%",
           },
           {
-            title: "Order Id",
-            dataIndex: "orderId",
-            key: "orderId",
+            title: "Ingredients",
+            dataIndex: "ingredients",
+            key: "ingredients",
           },
           {
-            title: "Order By",
-            dataIndex: "orderBy",
-            key: "orderBy",
+            title: "In Stock ",
+            dataIndex: "inStock",
+            key: "inStock",
           },
           {
-            title: "Status",
-            dataIndex: "status",
-            key: "status",
+            title: "Used In ",
+            dataIndex: "usedIn",
+            key: "usedIn",
             width: "20%",
           },
           {
@@ -116,7 +96,7 @@ const page = () => {
                   type="text"
                   className="p-2 flex items-center text-blue-500"
                 >
-                  View
+                  Update
                 </Button>
               </Link>
             ),

@@ -22,7 +22,7 @@ export default function Header() {
             <Link href="/">Home</Link>
           </li>
           <li className="hover:text-red-700 hover:text-xl">
-            <Link href="/about">Menu</Link>
+            <Link href="/menu">Menu</Link>
           </li>
           <li className="hover:text-red-700 hover:text-xl">
             <Link href="/orders">Orders</Link>
