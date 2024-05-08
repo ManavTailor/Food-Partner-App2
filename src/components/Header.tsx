@@ -1,6 +1,6 @@
-import Search from 'antd/es/input/Search'
-import Image from 'next/image'
-import Link from 'next/link'
+import Search from "antd/es/input/Search";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -24,7 +24,7 @@ export default function Header() {
             <Link href="/about">About</Link>
           </li>
           <li className="hover:text-red-700 hover:text-xl">
-            <Link href="/products">Products</Link>
+            <Link href="/orders">Orders</Link>
           </li>
           <li className="hover:text-red-700 hover:text-xl">
             <Link href="/contact">Contact Us</Link>
@@ -35,5 +35,5 @@ export default function Header() {
         </ul>
       </nav>
     </header>
-  )
+  );
 }
