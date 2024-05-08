@@ -21,7 +21,6 @@ export default function LoginPage() {
   const handleSubmit = async (values: any) => {
     // e.preventDefault();
     try {
-      console.log({ values })
       const { email, password } = values
       if (!password || !email) {
         return
@@ -37,13 +36,17 @@ export default function LoginPage() {
       //   })
       // })
 
-      signIn('credentials', {
+      const response = await signIn('credentials', {
         email,
         password,
         redirect: false
       })
 
       toast.success('Login Successfully!')
+      if (!response?.error) {
+        router.push('/')
+        router.refresh()
+      }
     } catch (error) {
       console.error('Api Error:', error)
       toast.error('Something went wrong please try again!')

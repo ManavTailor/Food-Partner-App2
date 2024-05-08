@@ -1,24 +1,26 @@
-"use client";
-import { Card } from "antd";
-import Search from "antd/es/input/Search";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
-import { useState } from "react";
-import { BiArrowFromTop } from "react-icons/bi";
-import { BsCalendarCheck } from "react-icons/bs";
-import { CiShop } from "react-icons/ci";
-import { FaEarthAfrica } from "react-icons/fa6";
-import { HiOutlineShoppingBag } from "react-icons/hi";
-import { RiEBike2Line } from "react-icons/ri";
-import { SiTicktick } from "react-icons/si";
-import { TbNotes } from "react-icons/tb";
+'use client'
+import { Card } from 'antd'
+import Search from 'antd/es/input/Search'
+import { useSession } from 'next-auth/react'
+import Image from 'next/image'
+import { useState } from 'react'
+import { BiArrowFromTop } from 'react-icons/bi'
+import { BsCalendarCheck } from 'react-icons/bs'
+import { CiShop } from 'react-icons/ci'
+import { FaEarthAfrica } from 'react-icons/fa6'
+import { HiOutlineShoppingBag } from 'react-icons/hi'
+import { RiEBike2Line } from 'react-icons/ri'
+import { SiTicktick } from 'react-icons/si'
+import { TbNotes } from 'react-icons/tb'
 
 export default function Home() {
-  const { data: session } = useSession();
-  console.log(session, "session");
+  const { data: session } = useSession()
+  console.log({
+    session
+  })
 
-  const [faqs, setFaqs] = useState(false);
-  const [data, setData] = useState([]);
+  const [faqs, setFaqs] = useState(false)
+  const [data, setData] = useState([])
   // useEffect(() => {
   //   const data = fetch('/api/GET').then(res => console.log(res, 'result'))
   // })
@@ -38,7 +40,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col absolute top-44 left-10">
             <span className="text-3xl font-semibold space-y-1">
-              Welcome {session?.user?.name || "user"}
+              Welcome {session?.user?.name || 'user'}
             </span>
             <span className="text-3xl font-semibold">
               at 0% commission for the 1st month!
@@ -81,7 +83,7 @@ export default function Home() {
                 <div className="ml-10 flex space-x-[13%]">
                   <span className="text-black  text-sm p-2 flex items-center ">
                     <SiTicktick className="text-green-500 mr-1" />
-                    FSSAI License Copy{" "}
+                    FSSAI License Copy{' '}
                     <span className="text-blue-400 hover:underline">
                       ( apply now )
                     </span>
@@ -94,7 +96,7 @@ export default function Home() {
                 <div className="ml-10 flex space-x-[19%]">
                   <span className="text-black  text-sm p-2 flex items-center ">
                     <SiTicktick className="text-green-500 mr-1" />
-                    Regular GSTIN{" "}
+                    Regular GSTIN{' '}
                     <span className="text-blue-400 hover:underline">
                       ( apply now )
                     </span>
@@ -297,7 +299,7 @@ export default function Home() {
                   </span>
                   <span className="text-gray-700 text-sm text-center px-2">
                     For every marketing dollar spent, Zomato returns over 8x the
-                    investment...{" "}
+                    investment...{' '}
                   </span>
                   <span className="text-blue-500 hover:underline text-xs text-center p-2 ">
                     Learn More
@@ -409,7 +411,7 @@ export default function Home() {
                 <div className="ml-10 flex space-x-[13%]">
                   <span className="text-black  text-sm p-2 flex items-center ">
                     <SiTicktick className="text-green-500 mr-1" />
-                    FSSAI License Copy{" "}
+                    FSSAI License Copy{' '}
                     <span className="text-blue-400 hover:underline">
                       ( apply now )
                     </span>
@@ -422,7 +424,7 @@ export default function Home() {
                 <div className="ml-10 flex space-x-[19%]">
                   <span className="text-black  text-sm p-2 flex items-center ">
                     <SiTicktick className="text-green-500 mr-1" />
-                    Regular GSTIN{" "}
+                    Regular GSTIN{' '}
                     <span className="text-blue-400 hover:underline">
                       ( apply now )
                     </span>
@@ -625,7 +627,7 @@ export default function Home() {
                   </span>
                   <span className="text-gray-700 text-sm text-center px-2">
                     For every marketing dollar spent, Zomato returns over 8x the
-                    investment...{" "}
+                    investment...{' '}
                   </span>
                   <span className="text-blue-500 hover:underline text-xs text-center p-2 ">
                     Learn More
@@ -683,5 +685,5 @@ export default function Home() {
         </main>
       )}
     </>
-  );
+  )
 }

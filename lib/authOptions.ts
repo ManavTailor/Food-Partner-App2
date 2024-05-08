@@ -25,6 +25,7 @@ export const authOptions: NextAuthOptions = {
         const client = await db.user.findUnique({
           where: { email: credentials?.email }
         })
+        console.log({ client })
 
         if (client) {
           const passwordCorrect = await compare(
@@ -32,10 +33,12 @@ export const authOptions: NextAuthOptions = {
             client.password
           )
 
+          console.log({ passwordCorrect })
           if (passwordCorrect) {
             return {
-              id: client.id.toString(), // Change the type of 'id' to string
-              email: client.email
+              id: client.id.toString(),
+              email: client.email,
+              name: client.name
             }
           }
         }

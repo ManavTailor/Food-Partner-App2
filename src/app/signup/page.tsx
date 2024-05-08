@@ -22,7 +22,6 @@ export default function SignupPage() {
   const handleSubmit = async (values: any) => {
     // e.preventDefault();
     try {
-      console.log({ values })
       const { name, email, password, confirmPassword } = values
       if (password !== confirmPassword) {
         return

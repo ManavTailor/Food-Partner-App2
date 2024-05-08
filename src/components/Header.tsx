@@ -1,8 +1,13 @@
-import Search from "antd/es/input/Search";
-import Image from "next/image";
-import Link from "next/link";
+'use client'
+import Search from 'antd/es/input/Search'
+import { useSession } from 'next-auth/react'
+import Image from 'next/image'
+import Link from 'next/link'
+import LogoutPage from './logout'
 
 export default function Header() {
+  const { data: session } = useSession()
+
   return (
     <header className="flex justify-between bg-white  items-center p-4 sticky top-0 z-10">
       <Image src="/Images/eshop.jpg" width={70} height={70} alt="eShop Logo" />
@@ -30,10 +35,10 @@ export default function Header() {
             <Link href="/contact">Contact Us</Link>
           </li>
           <li className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-600 rounded shadow">
-            <Link href="/login">LOGIN</Link>
+            {session ? <LogoutPage /> : <Link href="/login">LOGIN</Link>}
           </li>
         </ul>
       </nav>
     </header>
-  );
+  )
 }
