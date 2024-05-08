@@ -1,8 +1,10 @@
-import { Prisma, PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
 
 async function GET() {
-  return prisma.user.findMany();
+  const users = await prisma.user.findMany()
+  console.log('users', users)
+  return users
 }
 
-GET();
+GET()
