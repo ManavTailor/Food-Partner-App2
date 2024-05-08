@@ -20,12 +20,12 @@ export const authOptions: NextAuthOptions = {
       },
 
       async authorize(credentials, req) {
-        console.log('credentials', credentials)
+        // console.log('credentials', credentials)
 
         const client = await db.user.findUnique({
           where: { email: credentials?.email }
         })
-        console.log({ client })
+        // console.log({ client })
 
         if (client) {
           const passwordCorrect = await compare(
@@ -33,7 +33,7 @@ export const authOptions: NextAuthOptions = {
             client.password
           )
 
-          console.log({ passwordCorrect })
+          // console.log({ passwordCorrect })
           if (passwordCorrect) {
             return {
               id: client.id.toString(),
