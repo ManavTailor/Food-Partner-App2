@@ -4,7 +4,7 @@ import Search from "antd/es/input/Search";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { BiArrowFromTop } from "react-icons/bi";
 import { BsCalendarCheck } from "react-icons/bs";
 import { CiShop } from "react-icons/ci";
@@ -17,6 +17,13 @@ import { TbNotes } from "react-icons/tb";
 export default function Home() {
   const { data: session } = useSession();
   console.log(session, "session");
+  const verifyTOScroll = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    console.log(verifyTOScroll.current, "verifyTOScroll");
+    if (!verifyTOScroll.current) return;
+    verifyTOScroll.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   const [faqs, setFaqs] = useState(false);
   const [data, setData] = useState([]);
@@ -49,22 +56,23 @@ export default function Home() {
               selected cities.
             </span>
           </div>
-          <div className=" absolute top-[75%] left-[35%] space-x-5 flex ">
+          <div className=" absolute top-[75%] left-[35%] space-x-5 flex z-[9999] ">
             <div className="flex flex-col space-y-2">
-              <Link href='/resinfo'>
               <button
                 type="button"
+                onClick={() => {}}
                 className=" bg-blue-500  font-serif hover:bg-blue-700 p-2 rounded-md "
               >
                 Register your Restaurant
               </button>
-              </Link>
+
               <span className="text-xs">Need help ? Contact : 9876543210</span>
             </div>
             <div>
               <button
                 type="button"
                 className="p-2 rounded-md  bg-white hover:bg-gray-100 text-black font-serif"
+                onClick={handleScroll}
               >
                 Verify your existing Restaurant
               </button>
@@ -221,7 +229,7 @@ export default function Home() {
             </div>
           </div>
           <div className="bg-white h-72 flex justify-center ">
-            <div>
+            <div ref={verifyTOScroll}>
               <span className="text-black font-semibold text-2xl text-center flex justify-center mt-5">
                 Already have your restaurant listed?
               </span>

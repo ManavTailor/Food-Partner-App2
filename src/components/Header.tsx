@@ -20,18 +20,18 @@ export default function Header() {
 
       <nav>
         <ul className="flex space-x-4 text-black md:ml-auto flex-wrap items-center">
-          <li className="hover:text-red-700 hover:text-xl transition-all duration-500 ease-in-out   ">
-            <Link href="/">Home</Link>
-          </li>
-          <li className="hover:text-red-700 hover:text-xl">
-            <Link href="/menu">Menu</Link>
-          </li>
-          <li className="hover:text-red-700 hover:text-xl">
-            <Link href="/orders">Orders</Link>
-          </li>
-          <li className="hover:text-red-700 hover:text-xl">
-            <Link href="/inventory">Inventory</Link>
-          </li>
+          {/* <li className="hover:text-red-700 hover:text-xl transition-all duration-500 ease-in-out   "> */}
+          <Link href="/">Home</Link>
+          {/* </li> */}
+          {/* <li className="hover:text-red-700 hover:text-xl"> */}
+          <Link href="/menu">Menu</Link>
+          {/* </li> */}
+          {/* <li className="hover:text-red-700 hover:text-xl"> */}
+          <Link href="/orders">Orders</Link>
+          {/* </li> */}
+          {/* <li className="hover:text-red-700 hover:text-xl"> */}
+          <Link href="/inventory">Inventory</Link>
+          {/* </li> */}
           <li className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-4 border border-gray-600 rounded shadow">
             <Link
               href="/login"

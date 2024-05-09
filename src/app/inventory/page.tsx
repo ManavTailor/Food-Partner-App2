@@ -14,27 +14,28 @@ const page = () => {
   const dataSource = [
     {
       key: "1",
-      ingredients: "ORD-001",
-      inStock: "John Doe",
-      usedIn:"wow"
+      ingredients:
+        "Pizza Sauce , Pizza Dow, Pizza Toppings, Cheese, Pizza Base",
+      inStock: "Yes",
+      usedIn: "Pizza Base , Pizza Toppings, Pizza Sauce",
     },
     {
       key: "2",
-      ingredients: "ORD-002",
-      inStock: "Jane Doe",
-      usedIn :"wow"
+      ingredients: "Bread, Butter, Cheese, Veggies, Sauce",
+      inStock: "No",
+      usedIn: "Sandwich",
     },
     {
       key: "3",
-      ingredients: "ORD-003",
-      inStock: "John Doe",
-      usedIn: "Wow"
+      ingredients: "Sauce, Pasta, Veggies, Cheese",
+      inStock: "Yes",
+      usedIn: "Pasta",
     },
     {
       key: "4",
-      ingredients: "ORD-004",
-      inStock: "Jane Doe",
-      usedIn: "wow"
+      ingredients: "Bread, Butter, Cheese, Veggies, Sauce",
+      inStock: "Yes",
+      usedIn: "Sandwich",
     },
   ];
 
