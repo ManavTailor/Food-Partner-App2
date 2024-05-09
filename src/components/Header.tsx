@@ -1,10 +1,13 @@
-import Search from "antd/es/input/Search";
-import Image from "next/image";
-import Link from "next/link";
-import { LoginOutlined } from "@ant-design/icons";
-import { CiUser } from "react-icons/ci";
+'use client'
+import { useSession } from 'next-auth/react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { CiUser } from 'react-icons/ci'
+import LogoutPage from './logout'
 
 export default function Header() {
+  const { data: session } = useSession()
+
   return (
     <header className="flex justify-between bg-white  items-center p-4 sticky top-0 z-10">
       <Link href="/">
@@ -32,17 +35,20 @@ export default function Header() {
           {/* <li className="hover:text-red-700 hover:text-xl"> */}
           <Link href="/inventory">Inventory</Link>
           {/* </li> */}
-          <li className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-4 border border-gray-600 rounded shadow">
+
+          {session ? (
+            <LogoutPage />
+          ) : (
             <Link
-              href="/login"
               className="flex justify-center items-center space-x-1"
+              href="/login"
             >
               <CiUser className="font-bold" />
               LOGIN
             </Link>
-          </li>
+          )}
         </ul>
       </nav>
     </header>
-  );
+  )
 }

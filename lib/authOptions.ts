@@ -1,9 +1,11 @@
 import { NextAuthOptions } from 'next-auth'
 
 // import clientPromise from '@/lib/MongodbClient'
+import { compare } from 'bcrypt'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
+import { db } from './db'
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -13,22 +15,34 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        userName: { label: 'Username', type: 'text' },
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' }
       },
 
       async authorize(credentials, req) {
-        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/auth/signin`, {
-          method: 'POST',
-          body: JSON.stringify(credentials),
-          headers: { 'Content-Type': 'application/json' }
+        // console.log('credentials', credentials)
+
+        const client = await db.user.findUnique({
+          where: { email: credentials?.email }
         })
-        body: JSON.stringify(credentials)
-        const user = await res.json()
-        if (res.ok && user) {
-          return user
+        // console.log({ client })
+
+        if (client) {
+          const passwordCorrect = await compare(
+            credentials?.password || '',
+            client.password
+          )
+
+          // console.log({ passwordCorrect })
+          if (passwordCorrect) {
+            return {
+              id: client.id.toString(),
+              email: client.email,
+              name: client.name
+            }
+          }
         }
+
         return null
       }
     }),
