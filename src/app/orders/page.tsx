@@ -66,17 +66,6 @@ const page = () => {
           <div className="h-6 border-r-2 border-gray-300"></div>
           <div className="flex w-full justify-between items-center">
             <div className="text-lg font-semibold ">Orders</div>
-            <div className="text-lg font-semibold flex flex-col">
-              <Link href="/addorder">
-                <Button
-                  // type="text"
-                  className="p-2 flex items-center text-white bg-blue-500"
-                  icon={<BiPlus />}
-                >
-                  Add Order
-                </Button>
-              </Link>
-            </div>
           </div>
         </div>
       </Card>
